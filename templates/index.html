@@ -250,12 +250,12 @@
           <div style="margin-top:12px" class="row-4">
             <div>
               <label>Mode
-  <span class="tip" tabindex="0" data-tip="byte: cualquier texto/UTF-8 (recomendado). alphanumeric/numeric son más compactos pero restringen el alfabeto. kanji usa Shift-JIS.">?</span>
+  <span class="tip" tabindex="0" data-tip="byte: cualquier texto/UTF-8 (recomendado). mixed: divide el texto en segmentos numérico/alfanumérico/byte para que quepa en menos versión (Yape, Plin, Lemon, Dale). alphanumeric/numeric son más compactos pero restringen el alfabeto. kanji usa Shift-JIS.">?</span>
 </label>
               <select name="mode">
-                {% for v in ['byte','alphanumeric','numeric','kanji'] %}
+                {% for v in ['byte','mixed','alphanumeric','numeric','kanji'] %}
                   <option value="{{v}}" {% if mode==v %}selected{% endif %}>
-                    {{ 'Byte (UTF-8)' if v=='byte' else v }}
+                    {{ 'Byte (UTF-8)' if v=='byte' else ('Mixed (auto segments)' if v=='mixed' else v) }}
                   </option>
                 {% endfor %}
               </select>
